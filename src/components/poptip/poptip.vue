@@ -29,6 +29,7 @@
                         <div :class="[prefixCls + '-body']">
                             <i class="ivu-icon ivu-icon-ios-help-circle"></i>
                             <div :class="[prefixCls + '-body-message']"><slot name="title">{{ title }}</slot></div>
+                            <div :class="contentClasses" class="confirm-content" v-if="content"><slot name="content"><div :class="[prefixCls + '-body-content-inner']">{{ content }}</div></slot></div>
                         </div>
                         <div :class="[prefixCls + '-footer']">
                             <i-button size="small" @click.native="cancel">{{ localeCancelText }}</i-button>
@@ -86,6 +87,10 @@
                 type: [String, Number]
             },
             confirm: {
+                type: Boolean,
+                default: false
+            },
+            confirmContent:{
                 type: Boolean,
                 default: false
             },
@@ -237,7 +242,7 @@
             },
             handleMouseenter () {
                 if (this.disabled) return;
-                
+
                 if (this.trigger !== 'hover' || this.confirm) {
                     return false;
                 }
