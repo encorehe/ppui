@@ -156,6 +156,7 @@
         methods: {
             setRules() {
                 let rules = this.getRules();
+                console.log(rules,'=>rules')
                 if (rules.length&&this.required) {
                     return;
                 }else if (rules.length) {

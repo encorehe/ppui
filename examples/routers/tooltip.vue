@@ -17,7 +17,7 @@
 <template>
     <div>
         <div class="top">
-            <Tooltip content="Top Left text" placement="top-start">
+            <Tooltip transferClassName="aa" content="Top Left text" placement="top-start">
                 <Button>Top Left</Button>
             </Tooltip>
             <Tooltip content="Top Center text" placement="top">

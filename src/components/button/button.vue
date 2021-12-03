@@ -10,7 +10,7 @@
     import { oneOf } from '../../utils/assist';
     import mixinsLink from '../../mixins/link';
     import mixinsForm from '../../mixins/form';
-
+    import throttle from '../../utils/throttle.js'
     const prefixCls = 'ivu-btn';
 
     export default {
@@ -60,6 +60,10 @@
             ghost: {
                 type: Boolean,
                 default: false
+            },
+            throttleTime:{
+                type: Number,
+                default: 0
             }
         },
         computed: {
@@ -103,10 +107,19 @@
         methods: {
             // Ctrl or CMD and click, open in new window when use `to`
             handleClickLink (event) {
-                this.$emit('click', event);
-                const openInNewWindow = event.ctrlKey || event.metaKey;
+                let cb = () => {
+                    this.$emit('click', event);
+                    const openInNewWindow = event.ctrlKey || event.metaKey;
+                    this.handleCheckClick(event, openInNewWindow);
+                };
+                if(this.throttleTime){
+                    throttle(()=>{
+                        cb();
+                    },this.throttleTime);
+                    return false;
+                }
+                cb();
 
-                this.handleCheckClick(event, openInNewWindow);
             }
         }
     };

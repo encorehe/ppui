@@ -98,6 +98,7 @@
                             callback(valid);
                         }
                     }
+                    console.log(this.fields,'aaa')
                     this.fields.forEach(field => {
                         field.validate('', errors => {
                             if (errors) {

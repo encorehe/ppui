@@ -15,6 +15,7 @@
                             <Option value="shanghai">London</Option>
                             <Option value="shenzhen">Sydney</Option>
                         </Select>
+                        <Input :min="1"  :precision="0"></Input>
                     </FormItem>
                     <FormItem label="Date">
                         <Row>
@@ -282,6 +283,13 @@
 <script>
     export default {
         data () {
+            const that = this;
+            const validaters = (rule, value, callback) => {
+                let listRuleProfitDTOs = that.formValidate.city;
+                debugger
+                callback()
+            };
+
             return {
                 value1: '',
                 data1: [],
@@ -322,7 +330,7 @@
                         { type: 'email', message: 'Incorrect email format', trigger: 'blur' }
                     ],
                     city: [
-                        { required: true, message: 'Please select the city', trigger: 'change' }
+                        { required: true, validator: validaters, message: 'Please select the city', trigger: 'change,blur' }
                     ],
                     gender: [
                         { required: true, message: 'Please select gender', trigger: 'change' }

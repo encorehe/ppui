@@ -155,6 +155,8 @@
                 prefixCls: prefixCls,
                 dragOver: false,
                 fileList: [],
+                errFile:[],
+                postFiles:[],
                 tempIndex: 1,
                 isAccept: ''
             };
@@ -186,6 +188,8 @@
                 if (!files) {
                     return;
                 }
+                this.postFiles = [];
+                this.errFile=[];
                 this.uploadFiles(files);
                 this.$refs.input.value = null;
             },
@@ -205,7 +209,7 @@
                 if (!this.multiple) postFiles = postFiles.slice(0, 1);
 
                 if (postFiles.length === 0) return;
-
+                this.postFiles = postFiles;
                 postFiles.forEach(file => {
                     this.upload(file);
                 });
@@ -213,12 +217,21 @@
             upload (file) {
                 let isCheckFormat = this.checkFormat(file);
                 let isCheckSize = this.checkSize(file);
-                if(!isCheckFormat || !isCheckSize) return false;
+                if(!isCheckFormat || !isCheckSize) {
+                    this.errFile.push(file);
+                    return false;
+                }
                 if (!this.beforeUpload) {
                     return this.post(file);
                 }
-
-                const before = this.beforeUpload(file);
+                let errFile = this.errFile;
+                let successFile = [];
+                this.postFiles.forEach(item => {
+                    let findx = null;
+                    if(errFile && errFile.length>0) findx = errFile.find(items => items.name == item.name && items.size == item.size);
+                    if(!findx) successFile.push(item);
+                })
+                const before = this.beforeUpload(file,successFile);
                 if (before && before.then) {
                     before.then(processedFile => {
                         if (Object.prototype.toString.call(processedFile) === '[object File]') {

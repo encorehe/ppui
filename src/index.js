@@ -60,6 +60,9 @@ import {Row, Col} from './components/grid';
 import {Select, Option, OptionGroup} from './components/select';
 import locale from './locale/index';
 
+// 节流方法
+import throttle from './utils/throttle.js'
+
 const components = {
     Affix,
     Alert,
@@ -233,6 +236,7 @@ const install = function(Vue, opts = {}) {
     Vue.prototype.$Modal = Modal;
     Vue.prototype.$Notice = Notice;
     Vue.prototype.$Spin = Spin;
+    Vue.prototype.$throttle = throttle;
 };
 
 // auto install

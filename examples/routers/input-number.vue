@@ -52,12 +52,12 @@
         <InputNumber v-model="value2" @on-focus="focus" style="width: 200px"></InputNumber>
 
         <InputNumber v-model="value3" style="width: 200px" placeholder="Enter something..."></InputNumber> -->
-        <InputNumber v-model="valueNull" style="width: 200px" :min="100"  :max='10000'  :precision='2' ></InputNumber>
+        <InputNumber style="width: 200px"   :max='10000'  :precision='2' >  <span slot="pread">划线价:</span></InputNumber>
         <InputNumber
             :max="10000"
-            v-model="value9"
+            :disabled="true"
             :formatter="value => `$ ${value}`.replace(/B(?=(d{3})+(?!d))/g, ',')"
-            :parser="value => value.replace(/\$s?|(,*)/g, '')"></InputNumber>
+            :parser="value => value.replace(/\$s?|(,*)/g, '')"><span slot="append">111111111111</span></InputNumber>
 <!--        <InputNumber v-model="valueNull" style="width: 200px" ></InputNumber>
         <div style="margin:10px 0px">
             <InputNumber :activeChange="false" v-model="valueNull" style="width: 200px" :min='1' :max='10000'  :precision='2' ></InputNumber>

@@ -138,7 +138,7 @@
             }
         },
         methods: {
-            toggleSelect () {
+            toggleSelect (e) {
                 if (this.treeNode) {
                     this.$parent.$parent.$parent.toggleSelect(this.index, this.row._rowKey);
                 } else {
@@ -148,7 +148,8 @@
             toggleExpand () {
                 this.$parent.$parent.$parent.toggleExpand(this.index);
             },
-            handleClick () {
+            handleClick (e) {
+                e.stopPropagation();
                 // 放置 Checkbox 冒泡
             },
             handleTooltipIn () {
@@ -168,6 +169,7 @@
                 this.$parent.$parent.$parent.toggleTree(this.row._rowKey);
             },
             handleCellClick (event) {
+                if(this.renderType === 'selection' && !this.disabled) this.toggleSelect();
                 this.$parent.$parent.$parent.$emit('on-cell-click', this.row, this.column, this.row[this.column.key], event);
             }
         },

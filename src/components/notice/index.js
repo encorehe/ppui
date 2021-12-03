@@ -49,17 +49,27 @@ function notice (type, options) {
 
     if (type == 'normal') {
         withIcon = false;
-        content = `
+        if(title) {
+            content = `
             <div class="${prefixCls}-custom-content ${prefixCls}-with-normal ${with_desc}">
                 <div class="${prefixCls}-title">${title}</div>
                 <div class="${prefixCls}-desc">${desc}</div>
             </div>
         `;
+        }else{
+            content = `
+            <div class="${prefixCls}-custom-content ${prefixCls}-with-normal ${with_desc}">
+                <div class="${prefixCls}-desc">${desc}</div>
+            </div>
+        `;
+        }
+
     } else {
         const iconType = iconTypes[type];
         const outlineIcon = with_desc === '' ? '' : '-outline';
         withIcon = true;
-        content = `
+        if(title) {
+            content = `
             <div class="${prefixCls}-custom-content ${prefixCls}-with-icon ${prefixCls}-with-${type} ${with_desc}">
                 <span class="${prefixCls}-icon ${prefixCls}-icon-${type}">
                     <i class="${iconPrefixCls} ${iconPrefixCls}-${iconType}${outlineIcon}"></i>
@@ -68,6 +78,17 @@ function notice (type, options) {
                 <div class="${prefixCls}-desc">${desc}</div>
             </div>
         `;
+        }else{
+            content = `
+            <div class="${prefixCls}-custom-content ${prefixCls}-with-icon ${prefixCls}-with-${type} ${with_desc}">
+                <span class="${prefixCls}-icon ${prefixCls}-icon-${type}">
+                    <i class="${iconPrefixCls} ${iconPrefixCls}-${iconType}${outlineIcon}"></i>
+                </span>
+                <div class="${prefixCls}-desc">${desc}</div>
+            </div>
+        `;
+        }
+
     }
     instance.notice({
         name: noticeKey.toString(),

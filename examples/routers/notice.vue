@@ -25,7 +25,6 @@
             success (nodesc) {
                 this.$Notice.success({
                     duration: 10000,
-                    title: 'Notification title',
                     desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
                 });
             },

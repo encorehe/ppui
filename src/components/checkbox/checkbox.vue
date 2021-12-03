@@ -140,6 +140,7 @@
         methods: {
             change (event) {
                 event.preventDefault();
+                event.stopPropagation();
                 if (this.itemDisabled) {
                     return false;
                 }

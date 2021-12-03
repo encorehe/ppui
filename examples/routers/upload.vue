@@ -3,8 +3,10 @@
             multiple
             type="drag"
             paste
-            accept=".mp4"
-            :format="['audio/mp4','video/mp4']"
+            accept=".png,.gif,.jpg,.jpeg"
+            :on-format-error="handleFormatError"
+            :beforeUpload="beforeUpload"
+            :format="['png','gif','jpg']"
             action="//jsonplaceholder.typicode.com/posts/">
         <div style="padding: 20px 0">
             <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
@@ -14,6 +16,13 @@
 </template>
 <script>
     export default {
-
+        methods: {
+            handleFormatError(file) {
+                debugger
+            },
+            beforeUpload(file,fileList){
+                debugger
+            }
+        },
     }
 </script>

@@ -18,6 +18,7 @@
         </div>
         <div :class="inputWrapClasses">
             <input
+                type="number"
                 :id="elementId"
                 :class="inputClasses"
                 :disabled="itemDisabled"
@@ -323,7 +324,7 @@
             change (event) {
                 const that = this;
                 let cab = function () {
-                    console.log(11);
+                    // console.log(11);
                     // if (event.type == 'change' && that.activeChange) return;
                     // if (event.type == 'input' && !that.activeChange) return;
                     let val = event.target.value.trim();
@@ -361,7 +362,7 @@
         },
         mounted () {
             let { currentValue,min } = this;
-            console.log(currentValue,min);
+            // console.log(currentValue,min);
             if(!currentValue && min && min != -Infinity) this.setValue('');
             if(this.$slots.append) this.append = true;
             if(this.$slots.pread) this.pread = true;
@@ -403,4 +404,18 @@
         }
         .pread-text { line-height: 32px;padding-right: 5px; }
     }
+    /deep/ #spin {
+        display: none;
+    }
+
+    /* 谷歌 */
+     input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+           }
+
+    /* 火狐 */
+     input[type="number"]{
+             -moz-appearance: textfield;
+             }
 </style>
