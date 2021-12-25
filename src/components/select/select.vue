@@ -66,6 +66,7 @@
                 :transfer="transfer"
                 v-transfer-dom
             >
+                <Input v-if="searchPlaceholder" suffix="ios-search" :placeholder="searchPlaceholder" clearable @on-change="onQueryChangeSearch" />
                 <ul v-show="showNotFoundLabel && !allowCreate" :class="[prefixCls + '-not-found']"><li>{{ localeNotFoundText }}</li></ul>
                 <ul :class="prefixCls + '-dropdown-list'">
                     <li :class="prefixCls + '-item'" v-if="showCreateItem" @click="handleCreateItem">
@@ -161,13 +162,18 @@
 
 
     const ANIMATION_TIMEOUT = 300;
+    import Input from '../input'
 
     export default {
         name: 'iSelect',
         mixins: [ Emitter, Locale, mixinsForm ],
-        components: { FunctionalOptions, Drop, SelectHead, Icon },
+        components: { FunctionalOptions, Drop, SelectHead, Icon,Input },
         directives: { clickOutside, TransferDom },
         props: {
+            searchPlaceholder:{
+                type:[String],
+                default:'请输入搜索关键字'
+            },
             value: {
                 type: [String, Number, Array],
                 default: ''
@@ -187,11 +193,13 @@
             },
             clearable: {
                 type: Boolean,
-                validator (value) {
-                    return oneOf(value, [true, false]);
-                },
+                // validator (value) {
+                //     return oneOf(value, [true, false]);
+                // },
                 default () {
-                    return !this.$IVIEW || this.$IVIEW.clearable === '' ? false : this.$IVIEW.clearable;
+                    let flag = !this.$IVIEW || this.$IVIEW.clearable === '' ? false : this.$IVIEW.clearable;
+                    if( typeof flag == 'function') flag = true
+                    return flag;
                 }
             },
             placeholder: {
@@ -716,7 +724,11 @@
                     this.filterQueryChange = false;
                 }, ANIMATION_TIMEOUT);
             },
+            onQueryChangeSearch(e){
+                this.onQueryChange(e.data);
+            },
             onQueryChange(query) {
+                console.log('querys',query);
                 if (query.length > 0 && query !== this.query) {
                   // in 'AutoComplete', when set an initial value asynchronously,
                   // the 'dropdown list' should be stay hidden.

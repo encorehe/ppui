@@ -651,9 +651,23 @@
             },
             handleMouseIn (_index, rowKey) {
                 if (this.disabledHover) return;
-                const objData = rowKey ? this.getDataByRowKey(rowKey) : this.objData[_index];
-                if (objData._isHover) return;
-                objData._isHover = true;
+                let cab = () => {
+                    const objData = rowKey ? this.getDataByRowKey(rowKey) : this.objData[_index];
+                    if (objData._isHover) return;
+                    objData._isHover = true;
+                }
+                this.resetHover(cab);
+
+            },
+            resetHover(cab){
+                let { objData } = this;
+                if(objData && objData.length>0 ) {
+                    objData.forEach(item => item._isHover = false)
+                }
+                this.$set(this,'objData',objData);
+                this.$nextTick(()=>{
+                    cab && cab()
+                })
             },
             handleMouseOut (_index, rowKey) {
                 if (this.disabledHover) return;

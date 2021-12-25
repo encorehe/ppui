@@ -1,5 +1,6 @@
 <template>
     <div @click="onHeaderClick" :class="headCls">
+        {{clearable}}
         <span :class="[prefixCls + '-prefix']" v-if="$slots.prefix || prefix">
             <slot name="prefix">
                 <Icon :type="prefix" v-if="prefix" />
@@ -85,7 +86,9 @@
                     return oneOf(value, [true, false]);
                 },
                 default () {
-                    return !this.$IVIEW || this.$IVIEW.clearable === '' ? false : this.$IVIEW.clearable;
+                    let flag = !this.$IVIEW || this.$IVIEW.clearable === '' ? false : this.$IVIEW.clearable;
+                    return flag;
+                    // return true
                 }
             },
             inputElementId: {
@@ -250,6 +253,7 @@
                 }
             },
             handleInputEnter () {
+                console.log('a-enter');
                 this.$emit('on-enter');
             },
             onHeaderClick(e){
