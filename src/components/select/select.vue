@@ -183,6 +183,10 @@
                 type: [String, Number, Array],
                 default: ''
             },
+            labelKey: {
+                type: [String, Number, Array],
+                default: ''
+            },
             multiple: {
                 type: Boolean,
                 default: false
@@ -547,13 +551,13 @@
 
             validateOption({children, elm, propsData}){
                 const value = propsData.value;
-                const label = propsData.label || '';
+                const label = propsData.labelKey?propsData.labelKey:propsData.label ;
                 const textContent = (elm && elm.textContent) || (children || []).reduce((str, node) => {
                     const nodeText = node.elm ? node.elm.textContent : node.text;
                     return `${str} ${nodeText}`;
                 }, '') || '';
                 const stringValues = this.filterByLabel ? [label].toString() : [value, label, textContent].toString();
-                const query = this.query.toLowerCase().trim();
+                const query = this.query?this.query.toLowerCase().trim():'';
                 return stringValues.toLowerCase().includes(query);
             },
 
@@ -729,7 +733,7 @@
             },
             onQueryChange(query) {
                 console.log('querys',query);
-                if (query.length > 0 && query !== this.query) {
+                if (query && query.length > 0 && query !== this.query) {
                   // in 'AutoComplete', when set an initial value asynchronously,
                   // the 'dropdown list' should be stay hidden.
                   // [issue #5150]

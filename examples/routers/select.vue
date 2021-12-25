@@ -102,15 +102,15 @@
             return {
                 cityList: [
                     {
-                        value: 'New York',
+                        value: '111',
                         label: 'New York'
                     },
                     {
-                        value: 'London',
+                        value: '222',
                         label: 'London'
                     },
                     {
-                        value: 'Sydney',
+                        value: '33',
                         label: 'Sydney'
                     },
                     {
