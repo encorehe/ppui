@@ -164,6 +164,12 @@ const ppui = {
     iTime: Time
 };
 
+export function brightenKeyword(val, keyword) {
+    const Reg = new RegExp(keyword, 'g');
+    if (val) { return val.replace(Reg, `<span style="colo;">${keyword}</span>`)}
+}
+
+
 const install = function(Vue, opts = {}) {
     if (install.installed) return;
     locale.use(opts.locale);
@@ -237,6 +243,9 @@ const install = function(Vue, opts = {}) {
     Vue.prototype.$Notice = Notice;
     Vue.prototype.$Spin = Spin;
     Vue.prototype.$throttle = throttle;
+
+    Vue.prototype.brightenKeyword = brightenKeyword
+
 };
 
 // auto install
@@ -259,5 +268,6 @@ API.lang = (code) => {
     if (code === langObject.i.locale) locale.use(langObject);
     else console.log(`The ${code} language pack is not loaded.`); // eslint-disable-line no-console
 };
+
 
 module.exports.default = module.exports = API;   // eslint-disable-line no-undef

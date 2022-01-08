@@ -30,7 +30,9 @@
             <slot name="input">
                 <input type="hidden" :name="name" :value="publicValue">
                 <select-head
+                    :selectV="selectV"
                     :filterable="filterable"
+                    :isSearch="isSearch"
                     :multiple="multiple"
                     :values="values"
                     :clearable="canBeCleared"
@@ -66,16 +68,20 @@
                 :transfer="transfer"
                 v-transfer-dom
             >
-                <Input v-if="searchPlaceholder" suffix="ios-search" :placeholder="searchPlaceholder" clearable @on-change="onQueryChangeSearch" />
-                <ul v-show="showNotFoundLabel && !allowCreate" :class="[prefixCls + '-not-found']"><li>{{ localeNotFoundText }}</li></ul>
+<!--                @on-change="onQueryChangeSearch"-->
+                <Input v-if="isSearch" suffix="ios-search" :placeholder="searchPlaceholder" v-model="searchKey" clearable />
+                <ul v-show="showNotFoundLabel && !allowCreate" :class="[prefixCls + '-not-found']">
+                    <li>{{ localeNotFoundText }}</li>
+                </ul>
                 <ul :class="prefixCls + '-dropdown-list'">
+
                     <li :class="prefixCls + '-item'" v-if="showCreateItem" @click="handleCreateItem">
-                        {{ query }}
                         <Icon type="md-return-left" :class="prefixCls + '-item-enter'" />
                     </li>
                     <functional-options
                         v-if="(!remote) || (remote && !loading)"
                         :options="selectOptions"
+                        :query="query"
                         :slot-update-hook="updateSlotOptions"
                         :slot-options="slotOptions"
                     ></functional-options>
@@ -170,6 +176,10 @@
         components: { FunctionalOptions, Drop, SelectHead, Icon,Input },
         directives: { clickOutside, TransferDom },
         props: {
+            isSearch:{
+                type: Boolean,
+                default: false
+            },
             searchPlaceholder:{
                 type:[String],
                 default:'请输入搜索关键字'
@@ -314,6 +324,8 @@
         data () {
 
             return {
+                selectV:[],
+                searchKey:'',
                 prefixCls: prefixCls,
                 values: [],
                 dropDownWidth: 0,
@@ -484,6 +496,11 @@
             }
         },
         methods: {
+            brightenKeyword(val,keyword){
+                const Reg = new RegExp(keyword, 'g');
+                console.log('r',val);
+                if (val) { return val.replace(Reg, `<span style="colo;red">${keyword}</span>`)}
+            },
             setQuery(query){ // PUBLIC API
                 if (query) {
                     this.onQueryChange(query);
@@ -615,6 +632,7 @@
                 this.focusIndex = -1;
                 this.unchangedQuery = true;
                 this.values = [];
+                this.selectV = [];
                 this.filterQueryChange = false;
             },
             handleKeydown (e) {
@@ -709,6 +727,7 @@
                 } else {
                     this.query = String(option.label).trim();
                     this.values = [option];
+                    this.selectV = [option]
                     this.lastRemoteQuery = '';
                     this.hideMenu();
                 }
@@ -728,9 +747,9 @@
                     this.filterQueryChange = false;
                 }, ANIMATION_TIMEOUT);
             },
-            onQueryChangeSearch(e){
-                this.onQueryChange(e.data);
-            },
+            // onQueryChangeSearch(e){
+            //     this.onQueryChange(e.data);
+            // },
             onQueryChange(query) {
                 console.log('querys',query);
                 if (query && query.length > 0 && query !== this.query) {
@@ -788,6 +807,11 @@
             }
         },
         watch: {
+            searchKey(value){
+                console.log('value=>',value);
+                this.onQueryChange(value)
+                    // = value;
+            },
             value(value){
                 const {getInitialValue, getOptionData, publicValue, values} = this;
 

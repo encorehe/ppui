@@ -23,7 +23,9 @@
             // so we can trigger the parents computed properties and have everything reactive
             // although $slot.default is not
             if (props.slotOptions !== parent.$slots.default) props.slotUpdateHook();
-            return props.options;
+            let opt =  props.options
+            console.log(opt,'opt');
+            return opt;
         }
     };
 </script>

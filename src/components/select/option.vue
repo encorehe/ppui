@@ -17,6 +17,9 @@
         componentName: 'select-item',
         mixins: [ Emitter, mixinsForm ],
         props: {
+            query:{
+                type: [String, Number]
+            },
             value: {
                 type: [String, Number],
                 required: true
@@ -59,7 +62,8 @@
                 ];
             },
             showLabel () {
-                return (this.label) ? this.label : this.value;
+                let labels = (this.label) ? this.label : this.value;
+                return labels;
             },
             optionLabel(){
                 return this.label || (this.$el && this.$el.textContent);

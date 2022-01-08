@@ -22,10 +22,11 @@
             v-show="singleDisplayValue"
         >{{ singleDisplayValue }}</span>
         <input
+            readonly
             :id="inputElementId"
             type="text"
             v-if="filterable"
-            v-model="query"
+            v-model="querys"
             :disabled="disabled"
             :class="[prefixCls + '-input']"
             :placeholder="showPlaceholder ? localePlaceholder : ''"
@@ -79,6 +80,10 @@
                 type: Array,
                 default: () => []
             },
+            selectV: {
+                type: Array,
+                default: () => []
+            },
             clearable: {
                 type: Boolean,
                 validator (value) {
@@ -122,6 +127,7 @@
         },
         data () {
             return {
+                querys:'',
                 prefixCls: prefixCls,
                 query: '',
                 inputLength: 20,
@@ -261,11 +267,13 @@
                 }
             },
             onClear(){
+                this.querys = '';
                 this.$emit('on-clear');
             }
         },
         watch: {
             values ([value]) {
+                console.log(value,'a');
                 if (!this.filterable) return;
                 this.preventRemoteCall = true;
                 if (this.multiple){
@@ -277,6 +285,9 @@
                 if (typeof value === 'undefined' || value === '' || value === null) this.query = '';
                 else this.query = value.label;
                 this.$nextTick(() => this.preventRemoteCall = false); // this should be after the query change setter above
+            },
+            selectV([value]){
+                this.querys = value.label
             },
             query (val) {
                 if (this.preventRemoteCall) {
