@@ -3,7 +3,6 @@
 </template>
 <script>
     import { oneOf } from '../../utils/assist';
-
     const prefixCls = 'ivu-form';
 
     export default {
@@ -99,10 +98,21 @@
                         }
                     }
                     console.log(this.fields,'aaa')
+                    // console.log(model,errors,this);
+                    /*this.$nextTick(()=>{
+                        scrollToError(this.$refs.name);
+                    })*/
                     this.fields.forEach(field => {
                         field.validate('', errors => {
                             if (errors) {
                                 valid = false;
+                                console.log(field,this);
+                                this.$nextTick(()=>{
+;                                    field.$el.scrollIntoView({
+                                        behavior: 'smooth',
+                                        block: 'center'
+                                    })
+                                })
                             }
                             if (++count === this.fields.length) {
                                 // all finish
@@ -117,7 +127,7 @@
             },
             validateField(prop, cb) {
                 const field = this.fields.filter(field => field.prop === prop)[0];
-                if (!field) { throw new Error('[ppui warn]: must call validateField with valid prop string!'); }
+                if (!field) { throw new Error('[bcvvui warn]: must call validateField with valid prop string!'); }
 
                 field.validate('', cb);
             }

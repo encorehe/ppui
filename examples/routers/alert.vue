@@ -63,7 +63,7 @@
     </div>
 </template>
 <script>
-    import { Alert, Icon } from 'ppui';
+    import { Alert, Icon } from 'bcvvui';
     export default {
         components: { Alert, Icon }
     }

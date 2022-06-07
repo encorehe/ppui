@@ -1,7 +1,7 @@
-// Type definitions for ppui 3.3.1
-// Project:https://gitee.com/hejc/ppui
+// Type definitions for bcvvui 3.3.1
+// Project:https://gitee.com/hejc/bcvvui
 // Definitions by: yangdan
-// Definitions: https://github.com/yangdan8/ppui.git
+// Definitions: https://github.com/yangdan8/bcvvui.git
 import Vue from 'vue';
 
 export const LoadingBar: LoadingBarClass;
@@ -37,12 +37,12 @@ export declare class LoadingBarClass extends Vue {
 
 export declare class LoadingBarConfig {
   /**
-   * 进度条的颜色，默认为 ppui 主色
+   * 进度条的颜色，默认为 bcvvui 主色
    * @default primary
    */
   color?: string;
   /**
-   * 失败时的进度条颜色，默认为 ppui 主色
+   * 失败时的进度条颜色，默认为 bcvvui 主色
    * @default error
    */
   failedColor?: string;

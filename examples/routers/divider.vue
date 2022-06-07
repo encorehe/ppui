@@ -4,68 +4,68 @@
             <Card title="horizontal divider">
                 <div>
                     <p>
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
                     </p>
 
                     <Divider/>
 
                     <p>
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
                     </p>
 
-                    <Divider size="small">ppui</Divider>
+                    <Divider size="small">bcvvui</Divider>
 
                     <p>
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
                     </p>
 
-                    <Divider dashed>ppui Developer</Divider>
+                    <Divider dashed>bcvvui Developer</Divider>
                     <p>
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
                     </p>
-                    <Divider dashed orientation="left" size="small">ppui Developer</Divider>
+                    <Divider dashed orientation="left" size="small">bcvvui Developer</Divider>
                     <p>
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
                     </p>
-                    <Divider dashed orientation="right">ppui Developer</Divider>
+                    <Divider dashed orientation="right">bcvvui Developer</Divider>
                     <p>
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
                     </p>
 
                     <Divider dashed/>
 
                     <p>
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
                     </p>
 
-                    <Divider orientation="left">ppui</Divider>
+                    <Divider orientation="left">bcvvui</Divider>
 
                     <p>
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
                     </p>
 
-                    <Divider orientation="right">ppui</Divider>
+                    <Divider orientation="right">bcvvui</Divider>
 
                     <p>
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
-                        ppui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcvvui is a set of UI components and widgets built on Vue.js.
                     </p>
 
                 </div>
@@ -74,7 +74,7 @@
         <i-col span="12">
             <Card title="vertical divider">
                 <div>
-                    ppui
+                    bcvvui
                     <Divider type="vertical" />
                     <a href="#">Components</a>
                     <Divider type="vertical" />

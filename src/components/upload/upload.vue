@@ -57,6 +57,9 @@
             data: {
                 type: Object
             },
+            getData:{
+                type:Function
+            },
             name: {
                 type: String,
                 default: 'file'
@@ -87,6 +90,10 @@
             },
             maxSize: {
                 type: Number
+            },
+            maxNum:{
+                type:Number,
+                default:0
             },
             beforeUpload: Function,
             onProgress: {
@@ -126,6 +133,12 @@
                 }
             },
             onFormatError: {
+                type: Function,
+                default () {
+                    return {};
+                }
+            },
+            onMaxNumError: {
                 type: Function,
                 default () {
                     return {};
@@ -184,9 +197,13 @@
             },
             handleChange (e) {
                 const files = e.target.files;
-
                 if (!files) {
                     return;
+                }
+                let { maxNum } = this;
+                //判断最大上传次数
+                if(maxNum && files.length>maxNum) {
+                    return this.onMaxNumError(files);
                 }
                 this.postFiles = [];
                 this.errFile=[];
@@ -207,8 +224,10 @@
             uploadFiles (files) {
                 let postFiles = Array.prototype.slice.call(files);
                 if (!this.multiple) postFiles = postFiles.slice(0, 1);
-
                 if (postFiles.length === 0) return;
+                if (this.beforeUpload) {
+                    return this.beforeUpload(files);
+                }
                 this.postFiles = postFiles;
                 postFiles.forEach(file => {
                     this.upload(file);
@@ -217,6 +236,7 @@
             upload (file) {
                 let isCheckFormat = this.checkFormat(file);
                 let isCheckSize = this.checkSize(file);
+                debugger
                 if(!isCheckFormat || !isCheckSize) {
                     this.errFile.push(file);
                     return false;
@@ -253,12 +273,14 @@
                 let isCheck = true;
                 if (this.format.length) {
                     const _file_format = file.name.split('.').pop().toLocaleLowerCase();
+                    debugger
                     const checked = this.format.some(item => item.toLocaleLowerCase() === _file_format);
                     if (!checked) {
                         this.onFormatError(file, this.fileList);
                         isCheck = false;
                     }
                 }
+                debugger
                 return isCheck;
             },
             checkSize(file){
@@ -292,7 +314,7 @@
                     headers: this.headers,
                     withCredentials: this.withCredentials,
                     file: file,
-                    data: this.data,
+                    data: this.getData(file),
                     filename: this.name,
                     action: this.action,
                     onProgress: e => {

@@ -5,11 +5,11 @@
 </p>
 
 <h1>
-ppui
+bcvvui
     <h3>基于iviewui</h3>
 </h1>
 
-> 该项目基于 ppui。
+> 该项目基于 iviewui。
 
 ## Docs
 
@@ -25,22 +25,22 @@ ppui
 
 ## Install
 
-We provide an [View UI plugin](https://github.com/ppui-design/vue-cli-plugin-viewui) for Vue CLI 3, which you can use to quickly build an ViewUI-based project.
+We provide an [View UI plugin](https://github.com/bcvvui-design/vue-cli-plugin-viewui) for Vue CLI 3, which you can use to quickly build an ViewUI-based project.
 
-We also provide a starter kit [view-ui-project](https://github.com/ppui-design/view-ui-project) for you.
+We also provide a starter kit [view-ui-project](https://github.com/bcvvui-design/view-ui-project) for you.
 
 ### Install View UI
 
 Using npm:
 ```
-npm install ppui --save
+npm install bcvvui --save
 ```
 
 Using a script tag for global use:
 
 ```html
-<script type="text/javascript" src="ppui.min.js"></script>
-<link rel="stylesheet" href="dist/styles/ppui.css">
+<script type="text/javascript" src="bcvvui.min.js"></script>
+<link rel="stylesheet" href="dist/styles/bcvvui.css">
 ```
 
 You can find more info [on the website](https://www.iviewui.com/docs/guide/install-en).
@@ -65,7 +65,7 @@ You can find more info [on the website](https://www.iviewui.com/docs/guide/insta
 Using css via `import`:
 
 ```js
-import 'view-design/dist/styles/ppui.css';
+import 'view-design/dist/styles/bcvvui.css';
 ```
 
 ## Compatibility
@@ -82,9 +82,9 @@ import 'view-design/dist/styles/ppui.css';
 
 If you want to contribute or have questions or bugs to report:
 
-**Questions:** Find other users at the [Gitter chat](https://gitter.im/ppui/ppui) or post on [StackOverflow using `[ppui-ui]` tag](https://stackoverflow.com/questions/tagged/ppui-ui)  
-**Bugs:** [File a issue here](https://github.com/ppui-design/ppui/issues) - please provide a example so we can help you better  
-**Contribute:** Contact us in [Gitter chat](https://gitter.im/ppui/ppui), WeChat or via mail to `admin@aresn.com`. PRs welcome!
+**Questions:** Find other users at the [Gitter chat](https://gitter.im/bcvvui/bcvvui) or post on [StackOverflow using `[bcvvui-ui]` tag](https://stackoverflow.com/questions/tagged/bcvvui-ui)  
+**Bugs:** [File a issue here](https://github.com/bcvvui-design/bcvvui/issues) - please provide a example so we can help you better  
+**Contribute:** Contact us in [Gitter chat](https://gitter.im/bcvvui/bcvvui), WeChat or via mail to `admin@aresn.com`. PRs welcome!
 
 ## Major Contributors
 |Name|Avatar|Name|Avatar|Name|Avatar|
@@ -101,8 +101,8 @@ If you want to contribute or have questions or bugs to report:
 - [View UI Admin Pro](https://pro.iviewui.com/admin-pro)
 - [Developer](https://dev.iviewui.com)
 - [Run](https://run.iviewui.com)
-- [ppui-Loader](https://github.com/ppui/ppui-loader)
-- [ViewUI-Plugin](https://github.com/ppui/vue-cli-plugin-ppui)
+- [bcvvui-Loader](https://github.com/bcvvui/bcvvui-loader)
+- [ViewUI-Plugin](https://github.com/bcvvui/vue-cli-plugin-bcvvui)
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)

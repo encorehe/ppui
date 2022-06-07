@@ -286,7 +286,6 @@
             const that = this;
             const validaters = (rule, value, callback) => {
                 let listRuleProfitDTOs = that.formValidate.city;
-                debugger
                 callback()
             };
 

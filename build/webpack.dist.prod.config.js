@@ -15,8 +15,8 @@ module.exports = merge(webpackBaseConfig, {
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: 'ppui.min.js',
-        library: 'ppui',
+        filename: 'bcvvui.min.js',
+        library: 'bcvvui',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },

@@ -5,11 +5,11 @@ const isServer = Vue.prototype.$isServer;
 
 export default function (lang) {
     if (!isServer) {
-        if (typeof window.ppui !== 'undefined') {
-            if (!('langs' in ppui)) {
-                ppui.langs = {};
+        if (typeof window.bcvvui !== 'undefined') {
+            if (!('langs' in bcvvui)) {
+                bcvvui.langs = {};
             }
-            ppui.langs[lang.i.locale] = lang;
+            bcvvui.langs[lang.i.locale] = lang;
         }
     }
 };

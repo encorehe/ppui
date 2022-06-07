@@ -21,21 +21,20 @@
             @keydown.down.prevent="handleKeydown"
             @keydown.tab="handleKeydown"
             @keydown.delete="handleKeydown"
-
-
             @mouseenter="hasMouseHoverHead = true"
             @mouseleave="hasMouseHoverHead = false"
 
         >
             <slot name="input">
                 <input type="hidden" :name="name" :value="publicValue">
+<!--                {{values}}-->
                 <select-head
                     :selectV="selectV"
                     :filterable="filterable"
                     :isSearch="isSearch"
                     :multiple="multiple"
-                    :values="values"
-                    :clearable="canBeCleared"
+                    :values.sync="values"
+                    :clearable="clearable"
                     :prefix="prefix"
                     :disabled="itemDisabled"
                     :remote="remote"
@@ -176,6 +175,11 @@
         components: { FunctionalOptions, Drop, SelectHead, Icon,Input },
         directives: { clickOutside, TransferDom },
         props: {
+            beforeChange: Function,
+            visibleSelcted:{
+                type:Boolean,
+                default: false
+            },
             isSearch:{
                 type: Boolean,
                 default: false
@@ -324,6 +328,7 @@
         data () {
 
             return {
+                visibleSelcteds: this.visibleSelcted,
                 selectV:[],
                 searchKey:'',
                 prefixCls: prefixCls,
@@ -404,10 +409,10 @@
                 let status = true;
                 const noOptions = !this.selectOptions || this.selectOptions.length === 0;
                 if (!this.loading && this.remote && this.query === '' && noOptions) status = false;
-
+                console.log(noOptions,'noOptions')
                 if (this.autoComplete && noOptions) status = false;
 
-                return this.visible && status;
+                return (this.visible && status) || this.visibleSelcted;
             },
             showNotFoundLabel () {
                 const {loading, remote, selectOptions} = this;
@@ -709,43 +714,57 @@
 
                 this.focusIndex = index;
             },
+            onOptionClickItem(option){
+                        if (this.multiple){
+
+                                            // keep the query for remote select
+                                            if (this.remote) this.lastRemoteQuery = this.lastRemoteQuery || this.query;
+                                            else this.lastRemoteQuery = '';
+
+                                            const valueIsSelected = this.values.find(({value}) => value === option.value);
+                                            if (valueIsSelected){
+                                                this.values = this.values.filter(({value}) => value !== option.value);
+                                            } else {
+                                                this.values = this.values.concat(option);
+                                            }
+
+                                            this.isFocused = true; // so we put back focus after clicking with mouse on option elements
+                                        } else {
+                                            this.query = String(option.label).trim();
+                                            this.values = [option];
+                                            this.selectV = [option]
+                                            this.lastRemoteQuery = '';
+                                            this.hideMenu();
+                                        }
+
+                                        this.focusIndex = this.flatOptions.findIndex((opt) => {
+                                            if (!opt || !opt.componentOptions) return false;
+                                            return opt.componentOptions.propsData.value === option.value;
+                                        });
+
+                                        if (this.filterable){
+                                            const inputField = this.$el.querySelector('input[type="text"]');
+                                            if (!this.autoComplete) this.$nextTick(() => inputField.focus());
+                                        }
+                                        this.$emit('on-select', option); // # 4441
+                                        this.broadcast('Drop', 'on-update-popper');
+                                        setTimeout(() => {
+                                            this.filterQueryChange = false;
+                                        }, ANIMATION_TIMEOUT);
+            },
             onOptionClick(option) {
-                if (this.multiple){
-
-                    // keep the query for remote select
-                    if (this.remote) this.lastRemoteQuery = this.lastRemoteQuery || this.query;
-                    else this.lastRemoteQuery = '';
-
-                    const valueIsSelected = this.values.find(({value}) => value === option.value);
-                    if (valueIsSelected){
-                        this.values = this.values.filter(({value}) => value !== option.value);
-                    } else {
-                        this.values = this.values.concat(option);
-                    }
-
-                    this.isFocused = true; // so we put back focus after clicking with mouse on option elements
-                } else {
-                    this.query = String(option.label).trim();
-                    this.values = [option];
-                    this.selectV = [option]
-                    this.lastRemoteQuery = '';
-                    this.hideMenu();
-                }
-
-                this.focusIndex = this.flatOptions.findIndex((opt) => {
-                    if (!opt || !opt.componentOptions) return false;
-                    return opt.componentOptions.propsData.value === option.value;
-                });
-
-                if (this.filterable){
-                    const inputField = this.$el.querySelector('input[type="text"]');
-                    if (!this.autoComplete) this.$nextTick(() => inputField.focus());
-                }
-                this.$emit('on-select', option); // # 4441
-                this.broadcast('Drop', 'on-update-popper');
-                setTimeout(() => {
-                    this.filterQueryChange = false;
-                }, ANIMATION_TIMEOUT);
+                let {  beforeChange } = this;
+                 if(!beforeChange) return this.onOptionClickItem(option);
+                this.visible = false;
+                Promise.resolve(this.beforeChange ? this.beforeChange(option) : true)
+                    .then((result) => {
+                        if (result) {
+                            this.toggleMenu();
+                            this.onOptionClickItem(option);
+                        } else {
+                            return '';
+                        }
+                    })
             },
             // onQueryChangeSearch(e){
             //     this.onQueryChange(e.data);

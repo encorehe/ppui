@@ -21,6 +21,7 @@
             :class="singleDisplayClasses"
             v-show="singleDisplayValue"
         >{{ singleDisplayValue }}</span>
+<!--        {{querys}}-querys-->
         <input
             readonly
             :id="inputElementId"
@@ -240,7 +241,7 @@
             },
             onInputBlur () {
                 if (this.showCreateItem) return;
-                if (!this.values.length) this.query = '';  // #5155
+                if (!this.values.length) this.querys = '';  // #5155
                 this.$emit('on-input-blur');
             },
             removeTag (value) {
@@ -253,7 +254,7 @@
             },
             handleInputDelete (e) {
                 const targetValue = e.target.value;
-                if (this.multiple && this.selectedMultiple.length && this.query === '' && targetValue === '') {
+                if (this.multiple && this.selectedMultiple.length && this.querys === '' && targetValue === '') {
                     this.removeTag(this.selectedMultiple[this.selectedMultiple.length - 1]);
                 }
             },
@@ -277,19 +278,23 @@
                 if (!this.filterable) return;
                 this.preventRemoteCall = true;
                 if (this.multiple){
-                    this.query = '';
+                    this.querys = '';
                     this.preventRemoteCall = false; // this should be after the query change setter above
                     return;
                 }
                 // #982
-                if (typeof value === 'undefined' || value === '' || value === null) this.query = '';
-                else this.query = value.label;
+                if (typeof value === 'undefined' || value === '' || value === null) this.querys = '';
+                else this.querys = value.label || '';
                 this.$nextTick(() => this.preventRemoteCall = false); // this should be after the query change setter above
             },
             selectV([value]){
-                this.querys = value.label
+                if(value && value.label) {
+                    this.querys = value.label || ''
+                }else{
+                    this.querys = ''
+                }
             },
-            query (val) {
+            querys (val) {
                 if (this.preventRemoteCall) {
                     this.preventRemoteCall = false;
                     return;

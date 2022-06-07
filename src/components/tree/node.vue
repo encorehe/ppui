@@ -181,7 +181,7 @@
                 const item = this.data;
                 // if (item.disabled) return;
 
-                // Vue.js 2.6.9 对 transition 的 appear 进行了调整，导致 ppui 初始化时无动画，加此方法来判断通过点击箭头展开时，加 appear，否则初始渲染时 appear 为 false
+                // Vue.js 2.6.9 对 transition 的 appear 进行了调整，导致 bcvvui 初始化时无动画，加此方法来判断通过点击箭头展开时，加 appear，否则初始渲染时 appear 为 false
                 this.appearByClickArrow = true;
 
                 // async loading

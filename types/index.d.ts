@@ -1,10 +1,10 @@
-// Type definitions for ppui 3.3.1
-// Project:https://gitee.com/hejc/ppui
+// Type definitions for bcvvui 3.3.1
+// Project:https://gitee.com/hejc/bcvvui
 // Definitions by: yangdan
-// Definitions: https://github.com/yangdan8/ppui.git
-import ppui from './ppui';
+// Definitions: https://github.com/yangdan8/bcvvui.git
+import bcvvui from './bcvvui';
 
-export default ppui;
-export as namespace ppui;
+export default bcvvui;
+export as namespace bcvvui;
 
-export * from './ppui.components';
+export * from './bcvvui.components';

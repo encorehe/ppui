@@ -1,5 +1,5 @@
 <template>
-    <div :class="classes">
+    <div :class="classes" :ref="prop">
         <label :class="[prefixCls + '-label']" :for="labelFor" :style="labelStyles" v-if="label || $slots.label"><slot name="label">{{ label }}{{ FormInstance.colon }}</slot></label>
         <div :class="[prefixCls + '-content']" :style="contentStyles">
             <slot></slot>
@@ -12,6 +12,7 @@
 <script>
     import AsyncValidator from 'async-validator';
     import Emitter from '../../mixins/emitter';
+
 
     const prefixCls = 'ivu-form-item';
 
@@ -28,7 +29,7 @@
             if (key in tempObj) {
                 tempObj = tempObj[key];
             } else {
-                throw new Error('[ppui warn]: please transfer a valid prop path to form item!');
+                throw new Error('[bcvvui warn]: please transfer a valid prop path to form item!');
             }
         }
         return {
@@ -210,7 +211,6 @@
                     this.validateMessage = errors ? errors[0].message : '';
 
                     callback(this.validateMessage);
-
                     this.FormInstance && this.FormInstance.$emit('on-validate', this.prop, !errors, this.validateMessage || null);
                 });
                 this.validateDisabled = false;

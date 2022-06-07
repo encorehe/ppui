@@ -95,7 +95,7 @@
         <Button @click="hc">Open Menu2</Button>
         <Button to="/menu" @click="hc">Open Menu2</Button>
         <Button to="/menu" replace>Open Menu Replace</Button>
-        <Button to="//iviewui.com" target="_blank">Open ppui</Button>
+        <Button to="//iviewui.com" target="_blank">Open bcvvui</Button>
         <hr>
         <Button @click="hc">链接按钮</Button>
         <Button to="/menu" @click="hc">链接按钮</Button>

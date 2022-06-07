@@ -145,7 +145,7 @@ const components = {
     Upload
 };
 
-const ppui = {
+const bcvvui = {
     ...components,
     iButton: Button,
     iCircle: Circle,
@@ -175,8 +175,8 @@ const install = function(Vue, opts = {}) {
     locale.use(opts.locale);
     locale.i18n(opts.i18n);
 
-    Object.keys(ppui).forEach(key => {
-        Vue.component(key, ppui[key]);
+    Object.keys(bcvvui).forEach(key => {
+        Vue.component(key, bcvvui[key]);
     });
 
     Vue.prototype.$IVIEW = {
@@ -264,7 +264,7 @@ const API = {
 };
 
 API.lang = (code) => {
-    const langObject = window['ppui/locale'].default;
+    const langObject = window['bcvvui/locale'].default;
     if (code === langObject.i.locale) locale.use(langObject);
     else console.log(`The ${code} language pack is not loaded.`); // eslint-disable-line no-console
 };

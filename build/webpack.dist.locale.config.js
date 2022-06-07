@@ -24,7 +24,7 @@ module.exports = {
         path: path.resolve(__dirname, '../dist/locale'),
         publicPath: '/dist/locale/',
         filename: '[name].js',
-        library: 'ppui/locale',
+        library: 'bcvvui/locale',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },

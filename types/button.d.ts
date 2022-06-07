@@ -1,7 +1,7 @@
-// Type definitions for ppui 3.3.1
-// Project:https://gitee.com/hejc/ppui
+// Type definitions for bcvvui 3.3.1
+// Project:https://gitee.com/hejc/bcvvui
 // Definitions by: yangdan
-// Definitions: https://github.com/yangdan8/ppui.git
+// Definitions: https://github.com/yangdan8/bcvvui.git
 import Vue from 'vue';
 
 export declare class Button extends Vue {

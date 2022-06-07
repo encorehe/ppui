@@ -1,6 +1,6 @@
 <template>
     <div style="margin: 100px;">
-        <Select filterable :isSearch="true" v-model="model1"  style="width:200px" prefix="ios-albums">
+        <Select ref="ele" filterable :isSearch="true" v-model="model1" :before-change="beforeChange" :visibleSelcted="visibleSelcted" style="width:200px" prefix="ios-albums">
             <Option v-for="item in slectOps" :value="item.storeId" :key="item.storeId">{{ item.label }}</Option>
         </Select>
 
@@ -100,6 +100,7 @@
     export default {
         data () {
             return {
+                visibleSelcted:false,
                 slectOps:[
                     {
                         "storeId": 1,
@@ -1024,7 +1025,7 @@
                         label: 'Canberra'
                     }
                 ],
-                model1: '',
+                model1: 1,
                 model10: [],
                 model12: [],
                 model13: '',
@@ -1037,6 +1038,20 @@
             }
         },
         methods: {
+            beforeChange(val){
+                this.$Modal.confirm({
+                    title: '提示',
+                    content: '是否确认本条支付凭证审核通过？通过后将不可更改！',
+                    onOk: () => {
+                        this.visibleSelcted = false;
+                        // this.$refs.ele.hidePop()
+                    },
+                    onCancel:()=>{
+                        this.visibleSelcted = true;
+                        // this.$refs.ele.showPop()
+                    }
+                });
+            },
             more (num) {
                 return 'more' + num;
             },
