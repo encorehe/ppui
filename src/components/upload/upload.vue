@@ -236,7 +236,6 @@
             upload (file) {
                 let isCheckFormat = this.checkFormat(file);
                 let isCheckSize = this.checkSize(file);
-                debugger
                 if(!isCheckFormat || !isCheckSize) {
                     this.errFile.push(file);
                     return false;
@@ -273,14 +272,12 @@
                 let isCheck = true;
                 if (this.format.length) {
                     const _file_format = file.name.split('.').pop().toLocaleLowerCase();
-                    debugger
                     const checked = this.format.some(item => item.toLocaleLowerCase() === _file_format);
                     if (!checked) {
                         this.onFormatError(file, this.fileList);
                         isCheck = false;
                     }
                 }
-                debugger
                 return isCheck;
             },
             checkSize(file){
