@@ -271,7 +271,7 @@
                 if (val && !isNaN(this.precision)) val = Number(Number(val).toFixed(this.precision));
 
                 const {min, max} = this;
-                if (val!==null) {
+                if (val!==null && val !== '') {
                     if (val > max) {
                         val = max;
                     } else if (val < min) {

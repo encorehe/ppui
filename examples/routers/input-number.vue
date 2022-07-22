@@ -52,7 +52,7 @@
         <InputNumber v-model="value2" @on-focus="focus" style="width: 200px"></InputNumber>
 
         <InputNumber v-model="value3" style="width: 200px" placeholder="Enter something..."></InputNumber> -->
-        <InputNumber style="width: 200px"   :max='10000'  :precision='2' >  <span slot="pread">划线价:</span></InputNumber>
+        <InputNumber style="width: 200px" :min="0.01"   :max='10000'  :precision='2' >  <span slot="pread">划线价:</span></InputNumber>
         <InputNumber
             :max="10000"
             :disabled="true"

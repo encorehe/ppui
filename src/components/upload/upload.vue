@@ -58,7 +58,12 @@
                 type: Object
             },
             getData:{
-                type:Function
+                type:Function,
+                default(){
+                    return function(){
+                        return {};
+                    };
+                }
             },
             name: {
                 type: String,
@@ -96,6 +101,7 @@
                 default:0
             },
             beforeUpload: Function,
+            onbeforeUpload: Function,
             onProgress: {
                 type: Function,
                 default () {
@@ -224,16 +230,14 @@
             uploadFiles (files) {
                 let postFiles = Array.prototype.slice.call(files);
                 if (!this.multiple) postFiles = postFiles.slice(0, 1);
+
                 if (postFiles.length === 0) return;
-                if (this.beforeUpload) {
-                    return this.beforeUpload(files);
-                }
                 this.postFiles = postFiles;
                 postFiles.forEach(file => {
-                    this.upload(file);
+                    this.upload(file,files);
                 });
             },
-            upload (file) {
+            upload (file,files) {
                 let isCheckFormat = this.checkFormat(file);
                 let isCheckSize = this.checkSize(file);
                 if(!isCheckFormat || !isCheckSize) {
@@ -241,7 +245,7 @@
                     return false;
                 }
                 if (!this.beforeUpload) {
-                    return this.post(file);
+                    return this.post(file,files);
                 }
                 let errFile = this.errFile;
                 let successFile = [];
@@ -302,7 +306,7 @@
                 //     }
                 // }
 
-
+                if(!this.action) return false;
                 this.handleStart(file);
                 let formData = new FormData();
                 formData.append(this.name, file);
