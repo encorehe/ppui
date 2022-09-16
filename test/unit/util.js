@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import bcvvui from '../../src/index';
+import bcui from '../../src/index';
 
-Vue.use(bcvvui);
+Vue.use(bcui);
 
 let id = 0;
 

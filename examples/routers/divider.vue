@@ -4,68 +4,68 @@
             <Card title="horizontal divider">
                 <div>
                     <p>
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
                     </p>
 
                     <Divider/>
 
                     <p>
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
                     </p>
 
-                    <Divider size="small">bcvvui</Divider>
+                    <Divider size="small">bcui</Divider>
 
                     <p>
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
                     </p>
 
-                    <Divider dashed>bcvvui Developer</Divider>
+                    <Divider dashed>bcui Developer</Divider>
                     <p>
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
                     </p>
-                    <Divider dashed orientation="left" size="small">bcvvui Developer</Divider>
+                    <Divider dashed orientation="left" size="small">bcui Developer</Divider>
                     <p>
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
                     </p>
-                    <Divider dashed orientation="right">bcvvui Developer</Divider>
+                    <Divider dashed orientation="right">bcui Developer</Divider>
                     <p>
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
                     </p>
 
                     <Divider dashed/>
 
                     <p>
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
                     </p>
 
-                    <Divider orientation="left">bcvvui</Divider>
+                    <Divider orientation="left">bcui</Divider>
 
                     <p>
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
                     </p>
 
-                    <Divider orientation="right">bcvvui</Divider>
+                    <Divider orientation="right">bcui</Divider>
 
                     <p>
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
-                        bcvvui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
+                        bcui is a set of UI components and widgets built on Vue.js.
                     </p>
 
                 </div>
@@ -74,7 +74,7 @@
         <i-col span="12">
             <Card title="vertical divider">
                 <div>
-                    bcvvui
+                    bcui
                     <Divider type="vertical" />
                     <a href="#">Components</a>
                     <Divider type="vertical" />

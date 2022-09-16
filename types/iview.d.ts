@@ -1,6 +1,6 @@
 import { PluginFunction } from 'vue';
 
-interface bcvvui extends PluginFunction<any> {}
+interface bcui extends PluginFunction<any> {}
 
-declare const bcvvui: bcvvui;
-export default bcvvui;
+declare const bcui: bcui;
+export default bcui;

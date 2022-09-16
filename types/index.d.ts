@@ -1,10 +1,10 @@
-// Type definitions for bcvvui 3.3.1
-// Project:https://gitee.com/hejc/bcvvui
+// Type definitions for bcui 3.3.1
+// Project:https://gitee.com/hejc/bcui
 // Definitions by: yangdan
-// Definitions: https://github.com/yangdan8/bcvvui.git
-import bcvvui from './bcvvui';
+// Definitions: https://github.com/yangdan8/bcui.git
+import bcui from './bcui';
 
-export default bcvvui;
-export as namespace bcvvui;
+export default bcui;
+export as namespace bcui;
 
-export * from './bcvvui.components';
+export * from './bcui.components';

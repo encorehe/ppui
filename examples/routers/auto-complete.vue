@@ -9,14 +9,14 @@
             <div class="demo-auto-complete-item" v-for="item in data4">
                 <div class="demo-auto-complete-group">
                     <span>{{ item.title }}</span>
-                    <a href="https://www.google.com/search?q=bcvvui" target="_blank">更多</a>
+                    <a href="https://www.google.com/search?q=bcui" target="_blank">更多</a>
                 </div>
                 <Option v-for="option in item.children" :value="option.title" :key="option.title">
                     <span class="demo-auto-complete-title">{{ option.title }}</span>
                     <span class="demo-auto-complete-count">{{ option.count }} 人关注</span>
                 </Option>
             </div>
-            <a href="https://www.google.com/search?q=bcvvui" target="_blank" class="demo-auto-complete-more">查看所有结果</a>
+            <a href="https://www.google.com/search?q=bcui" target="_blank" class="demo-auto-complete-more">查看所有结果</a>
         </AutoComplete>
 <!--        <Select v-model="model1" style="width:200px">-->
 <!--            <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
@@ -33,12 +33,12 @@
                         title: '话题',
                         children: [
                             {
-                                title: 'bcvvui',
+                                title: 'bcui',
                                 count: 10000,
 
                             },
                             {
-                                title: 'bcvvui UI',
+                                title: 'bcui UI',
                                 count: 10600,
 
                             }
@@ -48,12 +48,12 @@
                         title: '问题',
                         children: [
                             {
-                                title: 'bcvvui UI 有多好',
+                                title: 'bcui UI 有多好',
                                 count: 60100,
 
                             },
                             {
-                                title: 'bcvvui 是啥',
+                                title: 'bcui 是啥',
                                 count: 30010,
 
                             }
@@ -63,7 +63,7 @@
                         title: '文章',
                         children: [
                             {
-                                title: 'bcvvui 是一个设计语言',
+                                title: 'bcui 是一个设计语言',
                                 count: 100000,
 
                             }

@@ -17,7 +17,7 @@ function css() {
             browsers: ['last 2 versions', 'ie > 8']
         }))
         .pipe(minifyCSS())
-        .pipe(rename('bcvvui.css'))
+        .pipe(rename('bcui.css'))
         .pipe(gulp.dest('../dist/styles'));
 }
 
@@ -46,7 +46,7 @@ exports.default = parallel( css, font);
 //             browsers: ['last 2 versions', 'ie > 8']
 //         }))
 //         .pipe(cleanCSS())
-//         .pipe(rename('bcvvui.css'))
+//         .pipe(rename('bcui.css'))
 //         .pipe(gulp.dest('../dist/styles'));
 // }));
 //

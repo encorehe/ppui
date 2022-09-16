@@ -29,7 +29,7 @@
             if (key in tempObj) {
                 tempObj = tempObj[key];
             } else {
-                throw new Error('[bcvvui warn]: please transfer a valid prop path to form item!');
+                throw new Error('[bcui warn]: please transfer a valid prop path to form item!');
             }
         }
         return {

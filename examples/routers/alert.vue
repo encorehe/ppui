@@ -63,7 +63,7 @@
     </div>
 </template>
 <script>
-    import { Alert, Icon } from 'bcvvui';
+    import { Alert, Icon } from 'bcui';
     export default {
         components: { Alert, Icon }
     }
